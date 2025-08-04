@@ -180,7 +180,7 @@ class ProgressSection:
         progressbar_frame.grid(row=2, column=0, sticky=(tk.W, tk.E), pady=(0, 8))
         progressbar_frame.grid_columnconfigure(0, weight=1)
         
-        # 진행바 (더 두껍게)
+        # 진행바 (더 두껍게, 실시간 업데이트 지원)
         self.progress = ttk.Progressbar(progressbar_frame, mode='determinate', length=400, style='Custom.Horizontal.TProgressbar')
         self.progress.grid(row=0, column=0, sticky=(tk.W, tk.E))
         
@@ -198,12 +198,12 @@ class ProgressSection:
                                    bg=self.colors['surface'])
         self.stage_label.grid(row=3, column=0, sticky=tk.W, pady=(5, 0))
         
-        # 스크롤 안내 메시지
-        scroll_hint = tk.Label(progress_frame, text="💡 진행 상황을 보려면 아래로 스크롤하세요",
-                              font=("Arial", 9),
-                              fg=self.colors['accent'],
-                              bg=self.colors['surface'])
-        scroll_hint.grid(row=4, column=0, sticky=tk.W, pady=(5, 0))
+        # 실시간 진행률 표시를 위한 추가 정보
+        self.detail_label = tk.Label(progress_frame, text="",
+                                    font=("Arial", 9),
+                                    fg=self.colors['text_secondary'],
+                                    bg=self.colors['surface'])
+        self.detail_label.grid(row=4, column=0, sticky=tk.W, pady=(5, 0))
 
 class ResultSection:
     """결과 섹션 컴포넌트"""

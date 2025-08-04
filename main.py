@@ -305,6 +305,27 @@ class WhisperGUI:
                 self.progress_section.time_var.set(time_info)
             else:
                 self.progress_section.time_var.set("")
+            
+            # 진행률 바 애니메이션 효과
+            if percentage > 0:
+                self.progress_section.progress.config(value=percentage)
+                # 진행률에 따른 색상 변경 효과
+                if percentage < 30:
+                    self.progress_section.progress.configure(style='Warning.Horizontal.TProgressbar')
+                elif percentage < 70:
+                    self.progress_section.progress.configure(style='Progress.Horizontal.TProgressbar')
+                else:
+                    self.progress_section.progress.configure(style='Success.Horizontal.TProgressbar')
+                
+                # 상세 정보 업데이트
+                if hasattr(self.progress_section, 'detail_label'):
+                    if percentage < 30:
+                        detail_text = "🔄 초기 설정 단계"
+                    elif percentage < 70:
+                        detail_text = "⚡ 변환 진행 중"
+                    else:
+                        detail_text = "🎯 마무리 단계"
+                    self.progress_section.detail_label.config(text=detail_text)
         
         self.root.after(0, update)
     

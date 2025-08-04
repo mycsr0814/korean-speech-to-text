@@ -65,6 +65,33 @@ class InstagramStyleUI:
                        darkcolor=colors['accent'],
                        thickness=15)  # 더 두껍게
         
+        # 진행률별 색상 변경을 위한 스타일들
+        style.configure('Progress.Horizontal.TProgressbar',
+                       background=colors['primary'],
+                       troughcolor=colors['background'],
+                       borderwidth=0,
+                       lightcolor=colors['primary'],
+                       darkcolor=colors['primary'],
+                       thickness=15)
+        
+        # 성공 진행률 스타일
+        style.configure('Success.Horizontal.TProgressbar',
+                       background=colors['success'],
+                       troughcolor=colors['background'],
+                       borderwidth=0,
+                       lightcolor=colors['success'],
+                       darkcolor=colors['success'],
+                       thickness=15)
+        
+        # 경고 진행률 스타일
+        style.configure('Warning.Horizontal.TProgressbar',
+                       background=colors['warning'],
+                       troughcolor=colors['background'],
+                       borderwidth=0,
+                       lightcolor=colors['warning'],
+                       darkcolor=colors['warning'],
+                       thickness=15)
+        
         # 스크롤바 스타일
         style.configure('Vertical.TScrollbar',
                        background=colors['primary'],
